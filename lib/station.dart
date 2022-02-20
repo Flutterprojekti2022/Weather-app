@@ -21,17 +21,11 @@ class Station extends StatelessWidget {
   }
 }
 
-class WeatherBody extends StatefulWidget {
-  const WeatherBody({Key? key}) : super(key: key);
-
-  @override
-  _WeatherBodyState createState() => _WeatherBodyState();
-}
-
-class _WeatherBodyState extends State<WeatherBody> {
+class WeatherBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var weather = fetchWeather();
+
     return FutureBuilder(
       future: weather,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -45,6 +39,11 @@ class _WeatherBodyState extends State<WeatherBody> {
                 snapshot.data['tempnow'].toString(),
                 'Temperature [C]',
                 Icons.thermostat,
+              ),
+              StationCard(
+                snapshot.data['precipitation1d'].toString(),
+                'Rain in a day [mm]',
+                Icons.water,
               ),
               StationCard(
                 snapshot.data['windspeed'].toString(),
@@ -66,6 +65,15 @@ class _WeatherBodyState extends State<WeatherBody> {
                 'Timestamp',
                 Icons.access_time_filled,
               ),
+              ElevatedButton.icon(
+                onPressed: fetchWeather,
+                icon: const Icon(
+                  Icons.downloading,
+                ),
+                label: const Text(
+                  'Reload',
+                ),
+              )
             ],
           );
         } else if (snapshot.hasError) {
