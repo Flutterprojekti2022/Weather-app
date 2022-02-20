@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 
-class StationCard extends StatelessWidget {
-  //const StationCard({Key? key}) : super(key: key);
-
+class StationCard extends StatefulWidget {
   String title;
   String subtitle;
-  //Icon icon;
   IconData icon;
 
   StationCard(this.title, this.subtitle, this.icon);
 
   @override
+  State<StationCard> createState() => _StationCardState();
+}
+
+class _StationCardState extends State<StationCard> {
+  @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         title: Text(
-          title.toString(),
+          widget.title.toString(),
         ),
         subtitle: Text(
-          subtitle,
+          widget.subtitle,
         ),
         leading: Icon(
-          icon,
+          widget.icon,
           color: Colors.blue,
         ),
-        //leading: icon,
       ),
     );
   }
