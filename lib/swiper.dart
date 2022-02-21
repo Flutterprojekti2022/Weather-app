@@ -20,7 +20,7 @@ class Swiper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Swipper'),
+        title: const Text('Swiper'),
       ),
       body: pages,
     );
