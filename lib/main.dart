@@ -16,7 +16,7 @@ class WeatherApp extends StatelessWidget {
       initialRoute: '/willab',
       routes: {
         '/willab': (context) => Station('Willab'),
-        '/about': (context) => About(),
+        '/about': (context) => const About(),
       },
     );
   }

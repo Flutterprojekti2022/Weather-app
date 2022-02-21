@@ -24,6 +24,13 @@ class Station extends StatelessWidget {
               child: Image.asset('images/willab.gif'),
             ),
             const StationData(),
+            TextButton(
+              onPressed: () => Navigator.pushNamed(
+                context,
+                '/about',
+              ),
+              child: const Text('About'),
+            ),
           ],
         ),
       ),
