@@ -28,37 +28,51 @@ class _StationDataState extends State<StationData> {
       future: weather,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
+          final data = [
+            {
+              "data": snapshot.data['tempnow'].toString(),
+              "label": "Temperature [C]",
+              "icon": Icons.thermostat,
+            },
+            {
+              "data": snapshot.data['precipitation1d'].toString(),
+              "label": "Rain in a day [mm]",
+              "icon": Icons.cloud,
+            },
+            {
+              "data": snapshot.data['windspeed'].toString(),
+              "label": "Wind [m/s]",
+              "icon": Icons.air,
+            },
+            {
+              "data": snapshot.data['winddir'].toString(),
+              "label": "Wind Direction [°]",
+              "icon": Icons.rotate_left,
+            },
+            {
+              "data": snapshot.data['windchill'].toString(),
+              "label": "Feels Like [C]",
+              "icon": Icons.accessibility,
+            },
+            {
+              "data": snapshot.data['timestamp'].toString(),
+              "label": "Timestamp",
+              "icon": Icons.access_time_filled,
+            },
+          ];
+
           return Column(
             children: [
-              StationDataCard(
-                snapshot.data['tempnow'].toString(),
-                'Temperature [C]',
-                Icons.thermostat,
-              ),
-              StationDataCard(
-                snapshot.data['precipitation1d'].toString(),
-                'Rain in a day [mm]',
-                Icons.cloud,
-              ),
-              StationDataCard(
-                snapshot.data['windspeed'].toString(),
-                'Wind [m/s]',
-                Icons.air,
-              ),
-              StationDataCard(
-                snapshot.data['winddir'].toString(),
-                'Wind Direction [°]',
-                Icons.rotate_left,
-              ),
-              StationDataCard(
-                snapshot.data['windchill'].toString(),
-                'Feels Like [C]',
-                Icons.accessibility,
-              ),
-              StationDataCard(
-                snapshot.data['timestamp'],
-                'Timestamp',
-                Icons.access_time_filled,
+              Column(
+                children: data
+                    .map(
+                      (element) => StationDataCard(
+                        element["data"] as String,
+                        element["label"] as String,
+                        element["icon"] as IconData,
+                      ),
+                    )
+                    .toList(),
               ),
               UpdateButton(update),
             ],
