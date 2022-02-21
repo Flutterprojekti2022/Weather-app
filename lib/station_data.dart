@@ -101,30 +101,32 @@ class _StationDataState extends State<StationData> {
   }
 }
 
-fetchWeather() async {
+_fetchWeather() async {
   final url = Uri.parse('http://weather.willab.fi/weather.json');
   var response = await get(url);
   return jsonDecode(response.body);
 }
 
-_fetchWeather() async {
-  var data = '''
-    {
-      "tempnow": -10.6,
-      "temphi": -3.8,
-      "templo": -12.9,
-      "dewpoint": -11.6,
-      "humidity": 93,
-      "airpressure": 986.3,
-      "windspeed": 1.0,
-      "windspeedmax": 2.2,
-      "winddir": 240,
-      "precipitation1d": 0.0,
-      "precipitation1h": 0.0,
-      "solarrad": 1113,
-      "windchill": -10.6,
-      "timestamp": "2022-02-20 19:14 EET"
-    }
-  ''';
-  return jsonDecode(data);
-}
+// For testing purposes
+//_fetchWeather() async {
+//  var data = '''
+//    {
+//      "tempnow": -10.6,
+//      "temphi": -3.8,
+//      "templo": -12.9,
+//      "dewpoint": -11.6,
+//      "humidity": 93,
+//      "airpressure": 986.3,
+//      "windspeed": 1.0,
+//      "windspeedmax": 2.2,
+//      "winddir": 240,
+//      "precipitation1d": 0.0,
+//      "precipitation1h": 0.0,
+//      "solarrad": 1113,
+//      "windchill": -10.6,
+//      "timestamp": "2022-02-20 19:14 EET"
+//    }
+//  ''';
+//  return jsonDecode(data);
+//}
+//
