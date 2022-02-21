@@ -14,11 +14,11 @@ class StationData extends StatefulWidget {
 }
 
 class _StationDataState extends State<StationData> {
-  var weather = fetchWeather();
+  var weather = _fetchWeather();
 
   update() {
     setState(() {
-      weather = fetchWeather();
+      weather = _fetchWeather();
     });
   }
 
@@ -87,13 +87,13 @@ class _StationDataState extends State<StationData> {
   }
 }
 
-_fetchWeather() async {
+fetchWeather() async {
   final url = Uri.parse('http://weather.willab.fi/weather.json');
   var response = await get(url);
   return jsonDecode(response.body);
 }
 
-fetchWeather() async {
+_fetchWeather() async {
   var data = '''
     {
       "tempnow": -10.6,
