@@ -42,6 +42,54 @@ class Station extends StatelessWidget {
           ],
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Drawer Header',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text(
+                'About',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(
+                  context,
+                  '/about',
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Swiper',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  )),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(
+                  context,
+                  '/swiper',
+                );
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
