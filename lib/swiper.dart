@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Swipper extends StatelessWidget {
+class Swiper extends StatelessWidget {
   final pages = PageView(
     controller: PageController(),
     children: [
