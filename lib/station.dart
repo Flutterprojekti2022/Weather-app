@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import 'package:weather_app/station_data.dart';
@@ -8,8 +6,6 @@ class Station extends StatelessWidget {
   String title;
 
   Station(this.title);
-
-  //var weather = fetchWeather();
 
   @override
   Widget build(BuildContext context) {
@@ -27,19 +23,19 @@ class Station extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pushNamed(
                     context,
                     '/about',
                   ),
                   child: const Text('About'),
                 ),
-                TextButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pushNamed(
                     context,
-                    '/swipper',
+                    '/swiper',
                   ),
-                  child: const Text('Swipper'),
+                  child: const Text('Swiper'),
                 ),
               ],
             ),
