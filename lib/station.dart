@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:weather_app/station_data.dart';
 
+import 'hamburger_tile.dart';
+
 class Station extends StatelessWidget {
   String title;
 
@@ -51,7 +53,7 @@ class Station extends StatelessWidget {
                 color: Colors.blue,
               ),
               child: Text(
-                'Drawer Header',
+                'Weather App',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
@@ -59,34 +61,8 @@ class Station extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
-              title: const Text(
-                'About',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(
-                  context,
-                  '/about',
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Swiper',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(
-                  context,
-                  '/swiper',
-                );
-              },
-            ),
+            HamburgerTile('About', '/about'),
+            HamburgerTile('Swiper', '/swiper'),
           ],
         ),
       ),
