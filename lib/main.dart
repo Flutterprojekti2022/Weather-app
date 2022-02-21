@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'station.dart';
+import 'about.dart';
 
 main() {
-  runApp(WeatherApp());
+  runApp(const WeatherApp());
 }
 
 class WeatherApp extends StatelessWidget {
@@ -12,7 +13,11 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Station('Willab'),
+      initialRoute: '/willab',
+      routes: {
+        '/willab': (context) => Station('Willab'),
+        '/about': (context) => About(),
+      },
     );
   }
 }
