@@ -23,7 +23,7 @@ class Station extends StatelessWidget {
             Center(
               child: Image.asset('images/willab.gif'),
             ),
-            StationData(),
+            const StationData(),
           ],
         ),
       ),
