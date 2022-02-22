@@ -34,10 +34,31 @@ class Station extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('Tiedot/km5TNqwRkjSXxtLyAiWw/lisatiedot')
+                  .snapshots(),
+              builder: (ctx, streamSnapshot) {
+                if (streamSnapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                final sdata = streamSnapshot.data;
+                return ListView.builder(
+                  itemCount: sdata.docs.length,
+                  shrinkWrap: true,
+                  itemBuilder: (ctx, index) => Container(
+                    padding: EdgeInsets.all(8),
+                    child: Text(streamSnapshot.data.docs[index]['tiedot']),
+                  ),
+                );
+              },
+            ),
             Center(
               child: Image.asset('images/willab.gif'),
             ),
-            const StationData(),
+            StationData(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

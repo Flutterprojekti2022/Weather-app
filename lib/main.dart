@@ -8,11 +8,11 @@ import 'swiper.dart';
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const WeatherApp());
+  runApp(WeatherApp());
 }
 
 class WeatherApp extends StatelessWidget {
-  const WeatherApp({Key? key}) : super(key: key);
+  //const WeatherApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class WeatherApp extends StatelessWidget {
       initialRoute: '/willab',
       routes: {
         '/willab': (context) => Station('Willab'),
-        '/about': (context) => const About(),
+        '/about': (context) => About(),
         '/swiper': (context) => Swiper(),
       },
     );
