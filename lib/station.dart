@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:weather_app/station_data.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'hamburger_tile.dart';
 
@@ -12,6 +15,19 @@ class Station extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          FirebaseFirestore.instance
+              .collection('Tiedot/km5TNqwRkjSXxtLyAiWw/lisatiedot')
+              .snapshots()
+              .listen((data) {
+            data.docs.forEach((doc) {
+              print(doc['tiedot']);
+            });
+          });
+        },
+      ),
       appBar: AppBar(
         title: Text(title),
       ),
