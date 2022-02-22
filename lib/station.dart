@@ -38,19 +38,21 @@ class Station extends StatelessWidget {
               stream: FirebaseFirestore.instance
                   .collection('Tiedot/km5TNqwRkjSXxtLyAiWw/lisatiedot')
                   .snapshots(),
-              builder: (ctx, streamSnapshot) {
+              builder: (
+                BuildContext ctx,
+                AsyncSnapshot<QuerySnapshot> streamSnapshot,
+              ) {
                 if (streamSnapshot.connectionState == ConnectionState.waiting) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
-                final sdata = streamSnapshot.data;
                 return ListView.builder(
-                  itemCount: sdata.docs.length,
+                  itemCount: streamSnapshot.data?.docs.length,
                   shrinkWrap: true,
                   itemBuilder: (ctx, index) => Container(
-                    padding: EdgeInsets.all(8),
-                    child: Text(streamSnapshot.data.docs[index]['tiedot']),
+                    padding: const EdgeInsets.all(8),
+                    child: Text(streamSnapshot.data?.docs[index]['tiedot']),
                   ),
                 );
               },
