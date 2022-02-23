@@ -7,7 +7,7 @@ import 'station_data_card.dart';
 import 'update_button.dart';
 
 class StationData extends StatefulWidget {
-  const StationData({Key? key}) : super(key: key);
+  //const StationData({Key? key}) : super(key: key);
 
   @override
   _StationDataState createState() => _StationDataState();

@@ -1,15 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'station.dart';
 import 'about.dart';
 import 'swiper.dart';
 
-main() {
-  runApp(const WeatherApp());
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(WeatherApp());
 }
 
 class WeatherApp extends StatelessWidget {
-  const WeatherApp({Key? key}) : super(key: key);
+  //const WeatherApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class WeatherApp extends StatelessWidget {
       initialRoute: '/willab',
       routes: {
         '/willab': (context) => Station('Willab'),
-        '/about': (context) => const About(),
+        '/about': (context) => About(),
         '/swiper': (context) => Swiper(),
       },
     );
