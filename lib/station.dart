@@ -24,7 +24,7 @@ class Station extends StatelessWidget {
           children: [
             StreamBuilder(
               stream: FirebaseFirestore.instance
-                  .collection('Tiedot/km5TNqwRkjSXxtLyAiWw/lisatiedot')
+                  .collection('Tiedot/ABNSill9hnzEtSo3ANOK/tiedot')
                   .snapshots(),
               builder: (
                 BuildContext ctx,
