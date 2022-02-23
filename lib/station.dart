@@ -6,6 +6,7 @@ import 'package:weather_app/station_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'hamburger_tile.dart';
+import 'card_firestore.dart';
 
 class Station extends StatelessWidget {
   String title;
@@ -15,19 +16,6 @@ class Station extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          FirebaseFirestore.instance
-              .collection('Tiedot/km5TNqwRkjSXxtLyAiWw/lisatiedot')
-              .snapshots()
-              .listen((data) {
-            data.docs.forEach((doc) {
-              print(doc['tiedot']);
-            });
-          });
-        },
-      ),
       appBar: AppBar(
         title: Text(title),
       ),
@@ -50,9 +38,8 @@ class Station extends StatelessWidget {
                 return ListView.builder(
                   itemCount: streamSnapshot.data?.docs.length,
                   shrinkWrap: true,
-                  itemBuilder: (ctx, index) => Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Text(streamSnapshot.data?.docs[index]['tiedot']),
+                  itemBuilder: (ctx, index) => CardFirestore(
+                    streamSnapshot.data?.docs[index]['tiedot'],
                   ),
                 );
               },
